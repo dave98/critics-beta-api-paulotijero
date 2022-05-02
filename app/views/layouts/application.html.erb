@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Critics Beta</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+  <header class="header">
+      <div class="container navbar">
+        <a href="/index.html" class="logo">
+          <img
+            src="/images/logo.png"
+            alt="Codeable"
+            height="32"
+          />
+        </a>
+        <nav>
+          <ul class="navbar-links" role="list">
+            <li><%= link_to 'Companies', companies_path, class: "link" %></li>
+            <li><%= link_to 'Genres', genres_path, class: "link" %></li>
+            <li><%= link_to 'Platforms', platforms_path, class: "link" %></li>
+            <li><%= link_to 'Games', games_path, class: "link" %></li>
+            <li><%= link_to 'Involved Companies', involved_companies_path, class: "link" %></li>
+            <li><%= link_to 'Critics', critics_path, class: "ink" %></li>
+
+          </ul>
+        </nav>
+        <div>
+          <%if user_signed_in?%>
+            <%=link_to "Edit Profile", edit_user_registration_path%>
+            <%=link_to "Logout", destroy_user_session_path, data: { turbo_method: :delete }%>
+          <%else%>
+            <%=link_to "Sign in", new_user_session_path%>
+            <%=link_to "Sign up", new_user_registration_path%>
+          <%end%>
+        </div>
+        <%=image_tag "icons/menu.svg", class: "navbar__menu-icon"%>
+        <%=image_tag "icons/close.svg", class: "navbar__menu-icon-close"%>
+      </div>
+    </header>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <%= yield %>
+  </body>
+</html>

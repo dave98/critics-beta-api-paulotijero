@@ -1,0 +1,30 @@
+<section class="section">
+  <div class="container">
+    <h1 class="heading">Platforms</h1>
+    <%= link_to 'New platform', new_platform_path, class: "button button--primary fit-content" %>
+
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Category</th>
+            <th scope="colgroup" colspan="3">Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @platforms.each do |platform| %>
+            <tr>
+              <td><%= platform.name %></td>
+              <td><%= platform.category %></td>
+              <td><%= link_to 'Show', platform %></td>
+              <td><%= link_to 'Edit', edit_platform_path(platform) %></td>
+              <td><%= link_to 'Destroy', platform, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
