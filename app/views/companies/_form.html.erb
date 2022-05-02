@@ -1,0 +1,44 @@
+<%= form_with(model: company, class: "flex flex-column gap-4") do |form| %>
+  <div class="flex gap-4 mb-2">
+    <div class="input">
+      <%= form.label :name, class:"content-xs overline"%>
+      <div class="input__container">
+        <%= form.text_field :name, class: "input__content", placeholder: "Company SA" %>
+      </div>
+      <%=errors_for(company, :name)%>
+    </div>
+  </div>
+
+  <div class="flex gap-4 mb-2">
+    <div class="input">
+      <%= form.label :description, class:"content-xs overline"%>
+      <div class="input__container">
+        <%= form.text_area :description, class: "input__content", placeholder: "About Company SA..." %>
+      </div>
+      <%=errors_for(company, :description)%>
+    </div>
+  </div>
+
+  <div class="flex gap-4 mb-2">
+    <div class="input">
+      <%= form.label :start_date, class:"content-xs overline"%>
+      <div class="input__container">
+        <%= form.date_field :start_date, class: "input__content" %>
+      </div>
+      <%=errors_for(company, :start_date)%>
+    </div>
+  </div>
+
+  <div class="flex gap-4 mb-2">
+    <div class="input">
+      <%= form.label :country, class:"content-xs overline"%>
+      <div class="input__container">
+        <%= form.text_field :country, class: "input__content", placeholder: "Peru" %>
+      </div>
+      <%=errors_for(company, :country)%>
+    </div>
+  </div>
+
+  <%= form.submit class: "button button--primary fit-content" %>
+
+<% end %>
