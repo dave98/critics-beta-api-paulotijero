@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Critics Beta</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+  <header class="header">
+      <div class="container navbar">
+        <a href="/index.html" class="logo">
+          <img
+            src="/images/logo.png"
+            alt="Codeable"
+            height="32"
+          />
+        </a>
+        <nav>
+          <ul class="navbar-links" role="list">
+            <li><%= link_to 'Companies', companies_path, class: "link" %></li>
+            <li><%= link_to 'Genres', genres_path, class: "link" %></li>
+            <li><%= link_to 'Platforms', platforms_path, class: "link" %></li>
+            <li><%= link_to 'Games', games_path, class: "link" %></li>
+            <li><%= link_to 'Involved Companies', involved_companies_path, class: "link" %></li>
+            <li><%= link_to 'Critics', critics_path, class: "ink" %></li>
+
+          </ul>
+        </nav>
+
+        <div>
+          <%if logged_in?%>
+            <p>Welcome, <%=current_user.username%></p>
+            <%=link_to "Edit Profile", "/profile"%>
+            <%=link_to "Logout", sessions_path, data: { turbo_method: :delete }%>
+          <%else%>
+            <%=link_to "Create account", new_user_path%>
+            <%=link_to "Login", "/login"%>
+          <%end%>
+        </div>
+        <%=image_tag "icons/menu.svg", class: "navbar__menu-icon"%>
+        <%=image_tag "icons/close.svg", class: "navbar__menu-icon-close"%>
+      </div>
+    </header>
+    <%flash.each do |key, value|%>
+      <p class="text-center"><%=key%>: <%=value%></p>
+    <%end%>
+    <%= yield %>
+  </body>
+</html>
